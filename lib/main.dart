@@ -6,17 +6,36 @@ void main() {
   runApp(DIRTXMain());
 }
 
+class DIRTXAppColorScheme {
+
+  // DIRTX Colors
+  static const Color rustLight = Color(0xFFFEF8EB);
+  static const Color rustMedium = Color(0xFFC36145);
+  static const Color rustVibrant = Color(0xFFAF2F0D);
+
+  static const Color greyLight = Color(0xFFD4D4D4);
+  static const Color greyDark = Color(0xFF3A3A3A);
+}
+
 class DIRTXMain extends StatelessWidget {
   const DIRTXMain({super.key});
+
+
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        scaffoldBackgroundColor: DIRTXAppColorScheme.rustLight,
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
             seedColor: Color.fromARGB(255, 175, 47, 13)),
+        pageTransitionsTheme: PageTransitionsTheme(
+          builders: {
+            TargetPlatform.windows: CupertinoPageTransitionsBuilder(),
+          }
+        ),
         fontFamily: "SpaceGrotesk",
         textTheme: TextTheme(
           bodyLarge: TextStyle(fontWeight: FontWeight.w400), // regular
@@ -24,6 +43,7 @@ class DIRTXMain extends StatelessWidget {
           titleLarge: TextStyle(fontWeight: FontWeight.w700), // bold
         ),
       ),
+      themeAnimationStyle: AnimationStyle(curve: Curves.easeInOutCubicEmphasized, duration: Duration(seconds: 2)),
       home: const DIRTXAppHome(),
     );
   }
