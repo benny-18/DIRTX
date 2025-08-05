@@ -30,7 +30,7 @@ class DIRTXMain extends StatelessWidget {
         scaffoldBackgroundColor: DIRTXAppColorScheme.rustLight,
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
-            seedColor: Color.fromARGB(255, 175, 47, 13)),
+            seedColor: DIRTXAppColorScheme.rustVibrant),
         pageTransitionsTheme: PageTransitionsTheme(
           builders: {
             TargetPlatform.windows: CupertinoPageTransitionsBuilder(),
@@ -39,7 +39,7 @@ class DIRTXMain extends StatelessWidget {
         fontFamily: "SpaceGrotesk",
         textTheme: TextTheme(
           bodyLarge: TextStyle(fontWeight: FontWeight.w400), // regular
-          bodyMedium: TextStyle(fontWeight: FontWeight.w300), // light
+          bodyMedium: TextStyle(fontWeight: FontWeight.w500, color: DIRTXAppColorScheme.greyDark), // light
           titleLarge: TextStyle(fontWeight: FontWeight.w700), // bold
         ),
       ),
