@@ -389,7 +389,7 @@ class _DIRTXConfigurationPanelState extends State<DIRTXConfigurationPanel> {
                   style: OutlinedButton.styleFrom(
                     fixedSize: Size.fromHeight(36),
                     foregroundColor: Colors.white,
-                    backgroundColor: DIRTXAppColorScheme.rustMedium,
+                    backgroundColor: DIRTXAppColorScheme.rustVibrant,
                     side: BorderSide(color: DIRTXAppColorScheme.greyLight, width: 0, strokeAlign: BorderSide.strokeAlignCenter),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                   ),

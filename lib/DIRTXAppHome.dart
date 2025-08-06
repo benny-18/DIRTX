@@ -1,6 +1,7 @@
-import 'package:dirtx/DIRTXConfigurationPanel.dart';
 import 'package:dirtx/main.dart';
 import 'package:flutter/material.dart';
+import 'package:dirtx/DIRTXConfigurationPanel.dart';
+import 'package:dirtx/DIRTXAboutCard.dart';
 
 class DIRTXAppHome extends StatefulWidget {
   const DIRTXAppHome({super.key});
@@ -13,7 +14,7 @@ class _DIRTXAppHomeState extends State<DIRTXAppHome> with SingleTickerProviderSt
 
   String appVersion = "v1.0";
 
-  String hasConn = "false";
+  String hasConn = "true";
   // String deviceName = "DroidCamX (Benny's Pixel 6)";
   String deviceName = "DJI Mini 4 Pro (Wi-Fi Direct)";
 
@@ -60,7 +61,14 @@ class _DIRTXAppHomeState extends State<DIRTXAppHome> with SingleTickerProviderSt
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                     padding: EdgeInsets.zero,
                   ),
-                  onPressed: (){},
+                  onPressed: (){
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return DIRTXAboutCard();
+                        }
+                    );
+                  },
                   child: Text(appVersion, style: TextStyle(fontWeight: FontWeight.bold, color: DIRTXAppColorScheme.rustVibrant),)
               ),
           ],),
@@ -155,7 +163,7 @@ class _DIRTXAppHomeState extends State<DIRTXAppHome> with SingleTickerProviderSt
                 OutlinedButton(
                     style: OutlinedButton.styleFrom(
                       foregroundColor: Colors.white,
-                      backgroundColor: Color(0xDDC36145),
+                      backgroundColor: Color(0xCCC36145),
                       fixedSize: Size.fromHeight(36),
                       side: BorderSide(color: DIRTXAppColorScheme.greyLight, width: 2, strokeAlign: BorderSide.strokeAlignCenter),
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
