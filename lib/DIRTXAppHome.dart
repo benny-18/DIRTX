@@ -1,3 +1,4 @@
+import 'package:dirtx/DIRTXFootageSelectionCard.dart';
 import 'package:dirtx/main.dart';
 import 'package:flutter/material.dart';
 import 'package:dirtx/DIRTXConfigurationPanel.dart';
@@ -150,11 +151,18 @@ class _DIRTXAppHomeState extends State<DIRTXAppHome> with SingleTickerProviderSt
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                       padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
                     ),
-                    onPressed: (){},
+                    onPressed: (){
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return DIRTXFootageSelectionCard();
+                        }
+                      );
+                    },
                     child: Row(children: [
-                      Icon(Icons.add_link_sharp, size: 16),
-                      SizedBox.square(dimension: 6),
-                      Text("Connect device")
+                      Icon(Icons.add_to_queue_rounded, size: 16),
+                      SizedBox.square(dimension: 8),
+                      Text("Input footage")
                     ],)
                 ),
 

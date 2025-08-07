@@ -49,7 +49,7 @@ class DIRTXAboutCard extends StatelessWidget {
                           text: 'https://github.com/benny-18/DIRTX',
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Colors.blue,
+                            color: DIRTXAppColorScheme.rustVibrant,
                             decoration: TextDecoration.underline,
                           ),
                           recognizer: TapGestureRecognizer()
@@ -70,12 +70,12 @@ class DIRTXAboutCard extends StatelessWidget {
                         spacing: 24,
                         children: [
                           SizedBox(
-                            width: 320,
+                            width: 280,
                             child: Container(
                               clipBehavior: Clip.hardEdge,
                               decoration: BoxDecoration(
                                   color: Colors.white,
-                                  border: Border.all(color: DIRTXAppColorScheme.greyLight, width: 3.0, strokeAlign: BorderSide.strokeAlignOutside),
+                                  border: Border.all(color: DIRTXAppColorScheme.rustMedium, width: 2.0, strokeAlign: BorderSide.strokeAlignOutside),
                                   borderRadius: BorderRadius.circular(12)
                               ),
                               child: Image(
