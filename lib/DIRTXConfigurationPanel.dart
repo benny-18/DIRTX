@@ -1,4 +1,5 @@
 import 'package:dirtx/main.dart';
+import 'package:dirtx/misc/DIRTXFlaskBackend.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -11,15 +12,11 @@ class DIRTXConfigurationPanel extends StatefulWidget {
 
 class _DIRTXConfigurationPanelState extends State<DIRTXConfigurationPanel> {
 
-  int resolution = 320;
-  double sensitivity = 80;
-  double strictness = 50;
-  int border = 2;
-  bool hideLabel = false;
-  bool hideScores = true;
-
   @override
   Widget build(BuildContext context) {
+
+    final loaderContext = Navigator.of(context).context;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -39,7 +36,7 @@ class _DIRTXConfigurationPanelState extends State<DIRTXConfigurationPanel> {
               onPressed: (){
                 setState(() {
                   resolution = 320;
-                  sensitivity = 80;
+                  sensitivity = 70;
                   strictness = 50;
                   border = 2;
                   hideLabel = false;
@@ -98,11 +95,10 @@ class _DIRTXConfigurationPanelState extends State<DIRTXConfigurationPanel> {
                             borderWidth: 1.0,
                             borderRadius: BorderRadius.circular(6),
                             selectedBorderColor: DIRTXAppColorScheme.rustMedium,
-                            isSelected: [resolution == 320, resolution == 480, resolution == 640, resolution == 960],
+                            isSelected: [resolution == 256, resolution == 320, resolution == 480, resolution == 640],
                             onPressed: (index) {
                               setState(() {
-                                resolution = [320, 480, 640, 960][index];
-
+                                resolution = [256, 320, 480, 640][index];
                                 // debugging chuchu
                                 if (kDebugMode) {
                                   print(resolution);
@@ -110,10 +106,10 @@ class _DIRTXConfigurationPanelState extends State<DIRTXConfigurationPanel> {
                               });
                             },
                             children: const [
+                              Text('256p', style: TextStyle(fontWeight: FontWeight.w500)),
                               Text('320p', style: TextStyle(fontWeight: FontWeight.w500)),
                               Text('480p', style: TextStyle(fontWeight: FontWeight.w500)),
                               Text('640p', style: TextStyle(fontWeight: FontWeight.w500)),
-                              Text('960p', style: TextStyle(fontWeight: FontWeight.w500)),
                             ],
                           ),
                         ),
@@ -373,33 +369,44 @@ class _DIRTXConfigurationPanelState extends State<DIRTXConfigurationPanel> {
                   ),
                 ),
               ),
-
+                SizedBox.square(dimension: 16)
               ],
             ),
           ),
         ),
 
         // run detections button
-        Column(
-          children: [
-            SizedBox.square(dimension: 16),
-            SizedBox(
-              width: double.infinity,
-              child: OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                    fixedSize: Size.fromHeight(36),
-                    foregroundColor: Colors.white,
-                    backgroundColor: DIRTXAppColorScheme.rustVibrant,
-                    side: BorderSide(color: DIRTXAppColorScheme.greyLight, width: 0, strokeAlign: BorderSide.strokeAlignCenter),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                  ),
-                  onPressed: (){},
-                  child:
-                  Text("Run detection")
-              ),
-            ),
-          ],
-        ),
+        // Column(
+        //   children: [
+        //     SizedBox.square(dimension: 16),
+        //     SizedBox(
+        //       width: double.infinity,
+        //       child: OutlinedButton(
+        //           style: OutlinedButton.styleFrom(
+        //             fixedSize: Size.fromHeight(36),
+        //             foregroundColor: Colors.white,
+        //             backgroundColor: DIRTXAppColorScheme.rustVibrant,
+        //             side: BorderSide(color: DIRTXAppColorScheme.greyLight, width: 0, strokeAlign: BorderSide.strokeAlignCenter),
+        //             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+        //           ),
+        //           onPressed: () async {
+        //             await setArguments(
+        //               resolution: resolution,
+        //               sensitivity: sensitivity,
+        //               strictness: strictness,
+        //               border: border,
+        //               hideLabel: hideLabel,
+        //               hideConfidence: hideScores,
+        //             );
+        //
+        //             await pickAndUploadMedia();
+        //           },
+        //           child:
+        //           Text("Run detection")
+        //       ),
+        //     ),
+        //   ],
+        // ),
 
       ],
     );

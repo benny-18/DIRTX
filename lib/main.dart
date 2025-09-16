@@ -1,9 +1,20 @@
 import 'package:dirtx/DIRTXAppHome.dart';
+import 'package:dirtx/DIRTXSplashScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:window_manager/window_manager.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  WindowManager.instance.ensureInitialized();
   runApp(DIRTXMain());
+  
+  windowManager.setTitleBarStyle(TitleBarStyle.hidden);
+  windowManager.center(animate: true);
+
+  // windowManager.waitUntilReadyToShow().then((_) async {
+  //   await windowManager.setTitleBarStyle(TitleBarStyle.hidden);
+  //   await windowManager.center(animate: true);
+  // });
 }
 
 class DIRTXAppColorScheme {
@@ -44,7 +55,7 @@ class DIRTXMain extends StatelessWidget {
         ),
       ),
       themeAnimationStyle: AnimationStyle(curve: Curves.easeInOutCubicEmphasized, duration: Duration(seconds: 2)),
-      home: const DIRTXAppHome(),
+      home: DIRTXSplashScreen(),
     );
   }
 }
